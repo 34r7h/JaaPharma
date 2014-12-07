@@ -10,7 +10,7 @@
    */
   angular
     .module('home', [
-      'ui.router', 'firebase'
+      'ui.router'
     ]);
 
   angular

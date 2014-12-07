@@ -12,7 +12,8 @@
     .module('jaapharma', [
       'ui.router',
       'mm.foundation',
-      'home'
+      'home',
+      'firebase'
     ]);
 
   angular
@@ -20,7 +21,7 @@
     .config(config);
 
   function config($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
   }
 
 })();

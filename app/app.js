@@ -21,7 +21,7 @@
     .config(config);
 
   function config($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
   }
 
 })();
