@@ -1,0 +1,12 @@
+<code ng-repeat="requirement in home.projectRequirements">
+  {{ $index + 1 }}. <b>{{requirement.name}}</b>
+  <p> Type: {{requirement.type}}</p>
+  <pre ng-if="requirement.data"> DataModel: {{requirement.data}}</pre>
+  <div ng-repeat="method in requirement.methods" ng-if="requirement.methods">
+    <div>function {{method.name}}(<i ng-repeat="arg in method.args"> {{arg}}<span ng-if="!$last">, </span></i> ) {</div>
+    <div><i ng-repeat="action in method.actions">{{action}}<span ng-if="!$last">, </span></i> </div>
+    <div>}</div>
+  </div>
+
+  <hr/>
+</code>
