@@ -12,7 +12,8 @@
     .module('jaapharma', [
       'ui.router',
       'mm.foundation',
-      'home'
+      'home',
+      'firebase'
     ]);
 
   angular
