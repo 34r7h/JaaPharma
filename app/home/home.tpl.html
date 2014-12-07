@@ -1,5 +1,5 @@
 <div ng-if="home.projectRequirements" ng-repeat="requirement in reqs.requirements">
-  <h2>{{ $index + 1 }}. <b>{{requirement.name}}</b></h2>
+  <h3>{{ $index + 1 }}. <b>{{requirement.name}}</b></h3>
   <p> Type: {{requirement.type}}</p>
   <pre ng-if="requirement.data"> DataModel: {{requirement.data}}</pre>
   <div ng-repeat="method in requirement.methods" ng-if="requirement.methods">
