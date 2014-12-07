@@ -20,7 +20,7 @@
   function config($stateProvider) {
     $stateProvider
       .state('home', {
-        url: '/home',
+        url: '/',
         templateUrl: 'home/home.tpl.html',
         controller: 'HomeCtrl as home'
       });
