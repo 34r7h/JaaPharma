@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">48.00</p>
+      <p class="stat">73.15</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">48</p>
+      <p class="stat">31</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">12.79</p>
+      <p class="stat">5.48</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.59</p>
+      <p class="stat">0.15</p>
     </div>
   </div>
 </div>
@@ -103,37 +103,20 @@
     .module(&#039;home&#039;)
     .controller(&#039;HomeCtrl&#039;, HomeCtrl);
 
-  function HomeCtrl() {
-    var vm = this;
+  function HomeCtrl($firebase, Firebase, $scope) {
+    var vm = this,
+      dataURL = &#039;http://tezt.firebaseio.com/jaapharma&#039;,
+      database  = new Firebase(dataURL);
+    vm.data = $firebase(database);
+    vm.sync = vm.data.$asObject();
+    setTimeout(function () {
+      vm.projectRequirements = vm.sync.requirements;
+      console.log(vm.projectRequirements);
+      vm.sync.$bindTo($scope, &#039;reqs&#039;);
+    }, 4000);
+    console.log(&#039;vm.sync&#039;, vm.sync);
     vm.ctrlName = &#039;HomeCtrl&#039;;
-    vm.projectRequirements = [
-      {name: &#039;app logo&#039;, type: &#039;image&#039;, data:{url: &#039;string&#039;, alt: &#039;string&#039;}},
-      {name: &#039;lab code&#039;, type: &#039;string&#039;},
-      {name: &#039;rep code&#039;, type: &#039;string&#039;},
-      {name: &#039;zone, region, province&#039;, type: &#039;string&#039;},
-      {name: &#039;lab logo&#039;, type: &#039;image&#039;, data:{url: &#039;string&#039;, alt: &#039;string&#039;}},
-      {name: &#039;city list&#039;, type: &#039;array&#039;, data:{name: &#039;string&#039;}},
-      {name: &#039;municipality list&#039;, type: &#039;array&#039;, data:{name: &#039;string&#039;}},
-      {name: &#039;doctor list&#039;, type: &#039;array&#039;, data:{
-        name: &#039;string&#039;,
-        address:&#039;string&#039;,
-        phone:&#039;string&#039;,
-        public:&#039;boolean&#039;,
-        specialty:&#039;string&#039;}
-      },
-      {name: &#039;map tracking with date and time&#039;, type: &#039;function&#039;, methods: [
-        {name: &#039;mapTrack&#039;, args:[&#039;location&#039;, &#039;user&#039;], actions:[&#039;gather location data&#039;, &#039;push to server&#039;]}]
-      },
-      {name: &#039;products name list&#039;, type: &#039;array&#039;, data:{name: &#039;string&#039;}},
-      {name: &#039;products name and form list&#039;, type: &#039;array&#039;, data:{name: &#039;string&#039;}},
-      {name: &#039;comments and request notes&#039;, type: &#039;array&#039;, data:{name: &#039;string&#039;}},
-      {name: &#039;number of samples given&#039;, type: &#039;array&#039;, data:{name: &#039;string&#039;}},
-      {name: &#039;save report and email&#039;, type: &#039;function&#039;, methods: [
-        {name: &#039;sendReport&#039;, args:[&#039;report&#039;, &#039;email&#039;], actions:[&#039;gather report data&#039;, &#039;push to server&#039;]}]
-      },
-      {name: &#039;statistical analytics&#039;, type: &#039;function&#039;, methods: [
-        {name: &#039;sendAnalytics&#039;, args:[&#039;userActions&#039;, &#039;email&#039;], actions:[&#039;gather user actions&#039;, &#039;push to server&#039;]}]}
-    ];
+
   }
 
 })();</textarea>
