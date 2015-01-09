@@ -19,10 +19,10 @@
     vm.data = $firebase(database);
     vm.sync = vm.data.$asObject();
     setTimeout(function () {
-      vm.projectRequirements = vm.sync.requirements;
-      console.log(vm.projectRequirements);
+      //vm.projectRequirements = vm.sync.requirements;
+      //console.log(vm.projectRequirements);
       vm.sync.$bindTo($scope, 'reqs');
-    }, 4000);
+    }, 0);
     console.log('vm.sync', vm.sync);
     vm.ctrlName = 'HomeCtrl';
 
