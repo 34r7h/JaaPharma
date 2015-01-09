@@ -1,4 +1,4 @@
-<div ng-if="home.projectRequirements" ng-repeat="requirement in reqs.requirements">
+<div ng-if="home.sync.requirements" ng-repeat="requirement in reqs.requirements">
   <h3>{{ $index + 1 }}. <b>{{requirement.name}}</b></h3>
   <p> Type: {{requirement.type}}</p>
   <pre ng-if="requirement.data"> DataModel: {{requirement.data}}</pre>
